@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  postgres_db:
+    image: postgres
+    restart: always
+    env_file:
+      - .env.dev
+    command: -p 5433
+    ports:
+      - "5433:5433"
+    expose:
+      - 5433
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+  web:
+    build: .
+    ports:
+      - 5000:5000
+    depends_on:
+      - postgres_db
+    links:
+      - postgres_db:db
+    env_file:
+      - .env.dev
+    volumes:
+      - .:/app
+
+volumes:
+  postgres_data:

@@ -1,4 +1,4 @@
-#Expense Tracker API
+# Expense Tracker API
 
 Features
 Here are the features that you should implement in your Expense Tracker API:
@@ -13,6 +13,24 @@ Custom (to specify a start and end date of your choosing).
 Add a new expense
 Remove existing expenses
 Update existing expenses
+
+# Running the project
+
+This project is built upon Docker and Docker-compose, running the following will do the work
+
+    docker-compose up -d
+To stop it
+    
+    docker-compose stop
+
+To remove it
+    
+    docker-compose rm
+
+If necessary it's possible to change the postgres connection, for this is just updating the .env.dev
+
+For the DB_URL it's important to use the host as the name for the postgres container which is db as specified 
+in the docker-compose. 
 
 # APIS Endpoints
 POST | /register | Creates a new user
